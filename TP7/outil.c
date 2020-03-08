@@ -126,7 +126,7 @@ void affichage_enreg(Enregistrement enr)
   /**********************************************************************/
 void affichage_enreg_frmt(Enregistrement enr)
 {
-	// code à compléter ici
+	printf("|%s\t\t|%s\t\t|%s", enr.nom, enr.prenom, enr.tel);
 	// comme fonction affichage_enreg, mais avec présentation alignées des infos
 	
 

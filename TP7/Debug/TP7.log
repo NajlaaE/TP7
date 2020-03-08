@@ -1,9 +1,2 @@
-﻿  outil.c
-C:\Users\Administrateur\Documents\mesTPs\TP7\TP7\outil.c(27,6): warning C4101: 'idx' : variable locale non référencée
-C:\Users\Administrateur\Documents\mesTPs\TP7\TP7\outil.c(184,6): warning C4101: 'ind_fin' : variable locale non référencée
-C:\Users\Administrateur\Documents\mesTPs\TP7\TP7\outil.c(187,7): warning C4101: 'tmp_nom2' : variable locale non référencée
-C:\Users\Administrateur\Documents\mesTPs\TP7\TP7\outil.c(186,7): warning C4101: 'tmp_nom' : variable locale non référencée
-C:\Users\Administrateur\Documents\mesTPs\TP7\TP7\outil.c(222,8): warning C4101: 'fic_rep' : variable locale non référencée
-  rep.c
-  Génération de code en cours...
+﻿  rep.c
   TP7.vcxproj -> C:\Users\Administrateur\Documents\mesTPs\TP7\Debug\TP7.exe

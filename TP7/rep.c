@@ -56,7 +56,7 @@ void main(int argc, char* argv[])
 	strcpy_s(enr.prenom, _countof(enr.prenom), "najlaa");
 	strcpy_s(enr.tel, _countof(enr.tel), "0123471381");
 
-	affichage_enreg(enr);
+	affichage_enreg_frmt( enr);
 }
 // void main(int argc, char* argv[])
 // {
