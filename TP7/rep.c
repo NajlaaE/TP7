@@ -51,12 +51,18 @@ char mess2[] = "\nPlus d'autre %s dans le répertoire\n";
 
 void main(int argc, char* argv[])
 {
-	Enregistrement enr;
-	strcpy_s(enr.nom, _countof(enr.nom), "Ez-zerouali");
-	strcpy_s(enr.prenom, _countof(enr.prenom), "najlaa");
-	strcpy_s(enr.tel, _countof(enr.tel), "0123471381");
+	Enregistrement enr0;
+	strcpy_s(enr0.nom, _countof(enr0.nom), "Ez-zerouali");
+	strcpy_s(enr0.prenom, _countof(enr0.prenom), "najlaa");
+	strcpy_s(enr0.tel, _countof(enr0.tel), "0123471381");
+	Enregistrement enr1;
+	strcpy_s(enr1.nom, _countof(enr1.nom), "Zut");
+	strcpy_s(enr1.prenom, _countof(enr1.prenom), "Pierre");
+	strcpy_s(enr1.tel, _countof(enr1.tel), "0123471381");
 
-	affichage_enreg_frmt( enr);
+	// affichage_enreg_frmt( enr);
+	printf("Resultat : %d\n", est_sup(enr1, enr0));
+
 }
 // void main(int argc, char* argv[])
 // {

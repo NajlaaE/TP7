@@ -139,11 +139,10 @@ void affichage_enreg_frmt(Enregistrement enr)
   /**********************************************************************/
 bool est_sup(Enregistrement enr1, Enregistrement enr2)
 {
-	// code à compléter ici
-	
-
-	return(false);
-
+	for (int i = 0; i < strlen(enr1.nom); i++) {
+		if (enr1.nom[i] < enr2.nom[i]) { return(true); }
+		else if (enr1.nom[i] > enr2.nom[i]) { return(false); }
+	}
 }
  
 /*********************************************************************/
