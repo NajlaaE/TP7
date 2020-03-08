@@ -1,2 +1,9 @@
-﻿  rep.c
+﻿  outil.c
+C:\Users\Administrateur\Documents\mesTPs\TP7\TP7\outil.c(27,6): warning C4101: 'idx' : variable locale non référencée
+C:\Users\Administrateur\Documents\mesTPs\TP7\TP7\outil.c(142,20): warning C4018: '<' : incompatibilité signed/unsigned
+C:\Users\Administrateur\Documents\mesTPs\TP7\TP7\outil.c(193,6): warning C4101: 'ind_fin' : variable locale non référencée
+C:\Users\Administrateur\Documents\mesTPs\TP7\TP7\outil.c(196,7): warning C4101: 'tmp_nom2' : variable locale non référencée
+C:\Users\Administrateur\Documents\mesTPs\TP7\TP7\outil.c(195,7): warning C4101: 'tmp_nom' : variable locale non référencée
+C:\Users\Administrateur\Documents\mesTPs\TP7\TP7\outil.c(231,8): warning C4101: 'fic_rep' : variable locale non référencée
+C:\Users\Administrateur\Documents\mesTPs\TP7\TP7\outil.c(146): warning C4715: 'est_sup' : les chemins de contrôle ne retournent pas tous une valeur
   TP7.vcxproj -> C:\Users\Administrateur\Documents\mesTPs\TP7\Debug\TP7.exe

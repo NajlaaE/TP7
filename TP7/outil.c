@@ -126,7 +126,7 @@ void affichage_enreg(Enregistrement enr)
   /**********************************************************************/
 void affichage_enreg_frmt(Enregistrement enr)
 {
-	printf("|%s\t\t|%s\t\t|%s", enr.nom, enr.prenom, enr.tel);
+	printf("|%s\t\t\t|%s\t\t\t|%s\n", enr.nom, enr.prenom, enr.tel);
 	// comme fonction affichage_enreg, mais avec présentation alignées des infos
 	
 
@@ -154,7 +154,16 @@ void trier(Repertoire *rep)
 
 #ifdef IMPL_TAB
 	// ajouter code ici pour tableau
-	
+	for (int EnrIdx = 0; EnrIdx < rep->nb_elts; EnrIdx++) {
+		Enregistrement firstEnr = *(rep->tab + EnrIdx);
+		Enregistrement secondEnr = *(rep->tab + EnrIdx +1);
+		Enregistrement tempo;
+		if (!est_sup(firstEnr, secondEnr)) {
+			tempo=*(rep->tab + EnrIdx);
+			*(rep->tab + EnrIdx)=*(rep->tab + EnrIdx + 1);
+			*(rep->tab + EnrIdx + 1) = tempo;
+		}
+	}
 
 
 	

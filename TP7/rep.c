@@ -49,91 +49,91 @@ char mess2[] = "\nPlus d'autre %s dans le répertoire\n";
 /*                        programme principal : main                         */
 /*****************************************************************************/
 
+//void main(int argc, char* argv[])
+// {
+// 	Enregistrement enr0;
+// 	strcpy_s(enr0.nom, _countof(enr0.nom), "Ez-zerouali");
+// 	strcpy_s(enr0.prenom, _countof(enr0.prenom), "najlaa");
+// 	strcpy_s(enr0.tel, _countof(enr0.tel), "0123471381");
+// 	Enregistrement enr1;
+// 	strcpy_s(enr1.nom, _countof(enr1.nom), "Zut");
+// 	strcpy_s(enr1.prenom, _countof(enr1.prenom), "Pierre");
+// 	strcpy_s(enr1.tel, _countof(enr1.tel), "0123471381");
+
+// 	// affichage_enreg_frmt( enr);
+// 	printf("Resultat : %d\n", est_sup(enr1, enr0));
+
+// }
 void main(int argc, char* argv[])
 {
-	Enregistrement enr0;
-	strcpy_s(enr0.nom, _countof(enr0.nom), "Ez-zerouali");
-	strcpy_s(enr0.prenom, _countof(enr0.prenom), "najlaa");
-	strcpy_s(enr0.tel, _countof(enr0.tel), "0123471381");
-	Enregistrement enr1;
-	strcpy_s(enr1.nom, _countof(enr1.nom), "Zut");
-	strcpy_s(enr1.prenom, _countof(enr1.prenom), "Pierre");
-	strcpy_s(enr1.tel, _countof(enr1.tel), "0123471381");
+	char choix;
+	/* caractère de l'option choisie dans menu utilisateur */
 
-	// affichage_enreg_frmt( enr);
-	printf("Resultat : %d\n", est_sup(enr1, enr0));
+	Repertoire repertoire;			/* variable qui déclare et crée le répertoire en mémoire */
+	system("CHCP 1252");
+	printf("\nsetlocale : %s\n", setlocale(LC_ALL, "fr-FR")); /* option de localisation pour les caractères accentués  */
 
+	if (argc == 1)
+	{
+		strcpy_s(nom_fichier, _countof(nom_fichier), "rep.txt");	/* nom du fichier par defaut */
+	}
+	else
+	{
+		strcpy_s(nom_fichier, _countof(nom_fichier), (char*)argv[1]);	/* nom du fichier utilisateur */
+	}
+	/* initialise le nombre d'éléments à zéro, alloue la mémoire du répertoire,
+	charge le fichier et le trie */
+	if (init_rep(&repertoire) < 0) return;
+
+	afficher_menu_principal();
+
+	do								/* lecture menu principal */
+	{							/* tant que pas demande pour Quitter */
+		do
+		{						/* lecture touche frappee au clavier */
+			choix = (char)toupper(_getch());
+		} while ((choix != 'A') && (choix != 'X') && (choix != 'J') && (choix != 'R'));
+
+		switch (choix)
+		{
+		case 'A':
+			affichage_repertoire(&repertoire);
+			break;
+		case 'J':
+			option_ajouter(&repertoire);
+			break;
+		case 'R':
+			option_rechercher(&repertoire);
+			break;
+		}
+		afficher_menu_principal();
+	} while (choix != 'X');
+
+	if (modif)					/* Si modification apportee au repertoire */
+	{						/* on propose une sauvegarde */
+		printf("\n Enregistrer modification ? O/N");
+		do
+		{
+			choix = (char)toupper(_getch());
+		} while ((choix != 'O') && (choix != 'N'));
+
+		if (choix == 'O')
+		{
+			printf("\n Enregistrer sous %s ? O/N", nom_fichier);
+			do
+			{
+				choix = (char)toupper(_getch());
+			} while ((choix != 'O') && (choix != 'N'));
+
+			if (choix == 'N') saisir_chemin("Nom du fichier: ?", nom_fichier);
+			sauvegarder(&repertoire, nom_fichier);
+		}
+	}
+	printf("\nBye !\n\n");
+
+
+	return;
 }
-// void main(int argc, char* argv[])
-// {
-//  char choix;
-// 							/* caractère de l'option choisie dans menu utilisateur */
-
-// 	Repertoire repertoire;			/* variable qui déclare et crée le répertoire en mémoire */
-// 	system("CHCP 1252");
-// 	printf("\nsetlocale : %s\n",setlocale(LC_ALL, "fr-FR")); /* option de localisation pour les caractères accentués  */
-
-// 	if (argc == 1)
-// 	{
-// 		strcpy_s(nom_fichier, _countof(nom_fichier), "rep.txt");	/* nom du fichier par defaut */
-// 	}
-// 	else
-// 	{
-// 		strcpy_s(nom_fichier, _countof(nom_fichier), (char *)argv[1]);	/* nom du fichier utilisateur */
-// 	}
-// 	/* initialise le nombre d'éléments à zéro, alloue la mémoire du répertoire, 
-// 	charge le fichier et le trie */
-// 	if (init_rep(&repertoire) <0) return;
-
-// 	afficher_menu_principal();
-
-// 	do								/* lecture menu principal */
-// 	{							/* tant que pas demande pour Quitter */
-// 		do
-// 		{						/* lecture touche frappee au clavier */
-// 			choix = (char)toupper(_getch());
-// 		} while ((choix != 'A') && (choix != 'X') && (choix != 'J') && (choix != 'R'));
-
-// 		switch (choix)
-// 		{
-// 		case 'A':
-// 			affichage_repertoire(&repertoire);
-// 			break;
-// 		case 'J':
-// 			option_ajouter(&repertoire);
-// 			break;
-// 		case 'R':
-// 			option_rechercher(&repertoire);
-// 			break;
-// 		}
-// 		afficher_menu_principal();
-// 	} while (choix != 'X');
-
-// 	if (modif)					/* Si modification apportee au repertoire */
-// 	{						/* on propose une sauvegarde */
-// 		printf("\n Enregistrer modification ? O/N");
-// 		do
-// 		{
-// 			choix = (char)toupper(_getch());
-// 		} while ((choix != 'O') && (choix != 'N'));
-
-// 		if (choix == 'O')
-// 		{
-// 			printf("\n Enregistrer sous %s ? O/N", nom_fichier);
-// 			do
-// 			{
-// 				choix = (char)toupper(_getch());
-// 			} while ((choix != 'O') && (choix != 'N'));
-
-// 			if (choix == 'N') saisir_chemin("Nom du fichier: ?", nom_fichier);
-// 			sauvegarder(&repertoire, nom_fichier);
-// 		}
-// 	}
-// 	printf("\nBye !\n\n");
-
-
-// 	return;
-// }
 /*****************************FIN du programme principal*********************/
 
 
